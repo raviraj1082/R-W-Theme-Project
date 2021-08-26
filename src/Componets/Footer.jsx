@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -18,11 +19,11 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="social-links text-center text-md-right pt-3 pt-md-0">
-                        <a href="#" className="twitter"><i className="bx bxl-twitter" /></a>
-                        <a href="#" className="facebook"><i className="bx bxl-facebook" /></a>
-                        <a href="#" className="instagram"><i className="bx bxl-instagram" /></a>
-                        <a href="#" className="google-plus"><i className="bx bxl-skype" /></a>
-                        <a href="#" className="linkedin"><i className="bx bxl-linkedin" /></a>
+                        <NavLink to="/Home" className="twitter"><i className="bx bxl-twitter" /></NavLink>
+                        <NavLink to="/Home" className="facebook"><i className="bx bxl-facebook" /></NavLink>
+                        <NavLink to="/Home" className="instagram"><i className="bx bxl-instagram" /></NavLink>
+                        <NavLink to="/Home" className="google-plus"><i className="bx bxl-skype" /></NavLink>
+                        <NavLink to="/Home" className="linkedin"><i className="bx bxl-linkedin" /></NavLink>
                     </div>
                 </div>
             </footer>

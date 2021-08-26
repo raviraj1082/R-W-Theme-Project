@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
@@ -11,36 +12,38 @@ const Header = () => {
                             <i className="bi bi-phone" /> +91 9988776655
                         </div>
                         <div className="d-none d-lg-flex social-links align-items-center">
-                            <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
-                            <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
-                            <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
-                            <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
+                            <NavLink to="/" className="twitter"><i className="bi bi-twitter" /></NavLink>
+                            <NavLink to="/" className="facebook"><i className="bi bi-facebook" /></NavLink>
+                            <NavLink to="/" className="instagram"><i className="bi bi-instagram" /></NavLink>
+                            <NavLink to="/" className="linkedin"><i className="bi bi-linkedin" /></NavLink>
                         </div>
                     </div>
                 </div>
                 <header id="header" className="fixed-top">
                     <div className="container d-flex align-items-center">
                         <div className="logo">
-                            <a href="index.html">
+                            <NavLink className="nav-link scrollto" to="/">
                                 <h1 className="logo me-auto">City</h1><br />
-                                <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>
-                            </a>
+                                <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>                           
+                            </NavLink>
                         </div>
                         <nav id="navbar" className="navbar order-last order-lg-0">
                             <ul>
-                                <li><a className="nav-link scrollto active" href="index.html">Home</a></li>
-                                <li><a className="nav-link scrollto" href="./pages/departments.html">Departments</a></li>
-                                <li><a className="nav-link scrollto" href="./pages/doctors.html">Doctors</a></li>
-                                <li><a className="nav-link scrollto " href="./pages/about.html">About</a></li>
-                                <li><a className="nav-link scrollto" href="./pages/contact.html">Contact</a></li>
+                                <li><NavLink className="nav-link scrollto" to="/">Home</NavLink></li>
+                                <li><NavLink className="nav-link scrollto" to="/Departmet">Departments</NavLink></li>
+                                <li><NavLink className="nav-link scrollto" to="/Doctors">Doctors</NavLink></li>
+                                <li><NavLink className="nav-link scrollto " to="/About">About</NavLink></li>
+                                <li><NavLink className="nav-link scrollto" to="/Contact">Contact</NavLink></li>
                             </ul>
                             <i className="bi bi-list mobile-nav-toggle" />
                         </nav>
-                        <a href="./pages/appointment.html" className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
-                            Appointment</a>
-                        <a href="#" className="appointment-btn scrollto">
+                        <NavLink to="/Appointment" className="appointment-btn scrollto">
+                            <span className="d-none d-md-inline">Make an</span>
+                            Appointment
+                        </NavLink>
+                        <NavLink to="/Signup" className="appointment-btn scrollto">
                             <span className="d-none d-md-inline">Login/ Signup</span>
-                        </a>
+                        </NavLink>
                     </div>
                 </header>
             </div>
