@@ -13,6 +13,7 @@ import Doctors from './Containers/Doctors';
 import About from './Containers/About';
 import Contact from './Containers/Contact';
 import Appointment from './Containers/Appointment';
+import Login from './Containers/Login';
 
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -28,7 +29,8 @@ function App() {
           <Route exact path="/Doctors" component={Doctors}></Route>   
           <Route exact path="/About" component={About}></Route>  
           <Route exact path="/Contact" component={Contact}></Route>
-          <Route exact path="/Appointment" component={Appointment}></Route>   
+          <Route exact path="/Appointment" component={Appointment}></Route> 
+          <Route exact path="/Login" component={Login}></Route>   
         </Switch>
         <Footer/>          
     </BrowserRouter>

@@ -13,7 +13,7 @@ class Appointment extends Component {
                 blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
                 Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
             </div>
-            <form action method="post" role="form" className="php-email-form">
+            <form className="php-email-form">
               <div className="row">
                 <div className="col-md-4 form-group">
                   <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />

@@ -41,7 +41,7 @@ const Header = () => {
                             <span className="d-none d-md-inline">Make an</span>
                             Appointment
                         </NavLink>
-                        <NavLink to="/Signup" className="appointment-btn scrollto">
+                        <NavLink to="/Login" className="appointment-btn scrollto">
                             <span className="d-none d-md-inline">Login/ Signup</span>
                         </NavLink>
                     </div>
