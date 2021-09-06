@@ -10,13 +10,13 @@ import Footer from './Componets/Footer';
 import Home from './Containers/Home';
 import Departmet from './Containers/Departmet';
 import Doctors from './Containers/Doctors';
+import Medicines from './Containers/Medicines';
 import About from './Containers/About';
 import Contact from './Containers/Contact';
 import Appointment from './Containers/Appointment';
 import Login from './Containers/Login';
-
-
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 
 function App() {
   return (        
@@ -27,6 +27,7 @@ function App() {
           <Route exact path="/Home" component={Home}></Route>
           <Route exact path="/Departmet" component={Departmet}></Route>
           <Route exact path="/Doctors" component={Doctors}></Route>   
+          <Route exact path="/Medicines" component={Medicines}></Route>   
           <Route exact path="/About" component={About}></Route>  
           <Route exact path="/Contact" component={Contact}></Route>
           <Route exact path="/Appointment" component={Appointment}></Route> 

@@ -32,6 +32,7 @@ const Header = () => {
                                 <li><NavLink className="nav-link scrollto" to="/">Home</NavLink></li>
                                 <li><NavLink className="nav-link scrollto" to="/Departmet">Departments</NavLink></li>
                                 <li><NavLink className="nav-link scrollto" to="/Doctors">Doctors</NavLink></li>
+                                <li><NavLink className="nav-link scrollto" to="/Medicines">Medicine</NavLink></li>
                                 <li><NavLink className="nav-link scrollto " to="/About">About</NavLink></li>
                                 <li><NavLink className="nav-link scrollto" to="/Contact">Contact</NavLink></li>
                             </ul>

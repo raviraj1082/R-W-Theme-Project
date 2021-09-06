@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function Login () {
+const Login = () => {
     const[type, setType] = useState('login')
 
     const logIn = () =>{
@@ -13,15 +13,6 @@ function Login () {
     const mailSend = () =>{
         alert('Email Send')
     }
-
-    // const[count, setCount] = useState(0);
-    // const incNum = () =>{
-    //     setCount(count + 1)
-    //     console.log(count)
-    // }
-    // const decNum = () =>{
-    //     setCount(count - 1)
-    // }
     
     return (
         
@@ -37,10 +28,6 @@ function Login () {
                             
                         :   <h2> Forgot Password</h2>
                     }
-                    {/* <h2>{count}</h2>
-                    <button className="btn btn-primary" onClick={() => incNum()}style={{marginRight:"8px"}}>Plus</button>
-                    <button className="btn btn-primary " onClick={() => decNum()} style={{marginLeft:"5px"}}>Minus</button> */}
-                  
                 </div>
                 <div className="php-email-form mx-auto">
                     {
