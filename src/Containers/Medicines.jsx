@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Input } from 'reactstrap';
 import List from './List';
+import { Button,Input } from 'reactstrap';
 
 const medicineList =[
     {       
@@ -52,16 +52,18 @@ const medicineList =[
         desc:'low blood cell counts'
     }
 ]
+
 const Medicines = (props) => {
 
     const[medicine] = useState(medicineList)
     const[search,setSearch] = useState('')
-    
-    let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase()) || (val.price.toString().includes(search)) ))
+
+    let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || (val.desc.toLowerCase().includes(search.toLowerCase()))))
     
     if(search === ''){
         filterData = medicine
     }
+
     return (
         <>  
             <main>
@@ -70,10 +72,24 @@ const Medicines = (props) => {
                         <div className="section-title pb-0">
                             <h2>Medicine List</h2>
                         </div>
+                        {/* <div className="row">
+                            <div className="col-3">
+                                <Input type="text" name="name"  placeholder="Name" />
+                            </div>
+                            <div className="col-3">
+                                <Input type="text" name="name"  placeholder="Price"/>
+                            </div>
+                            <div className="col-3">
+                                <Input type="text" name="name"  placeholder="Date"/>
+                            </div>
+                            <div className="col-3">
+                                <Button className='bg-primary'>Add Medicine</Button>
+                            </div>
+                        </div> */}
                         <div className="row">
-                        <div className="col-4 mx-auto">
-                            <Input type="text" placeholder='Search...' onChange={(e) => setSearch(e.target.value)} />
-                        </div>
+                            <div className="col-4 mx-auto pt-3">
+                                <Input type="text" placeholder='Filter as your requirement...' onChange={(e) => setSearch(e.target.value)} />
+                            </div>
                         </div>
                         <div className="row">                            
                             {
