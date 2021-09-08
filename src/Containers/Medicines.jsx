@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import List from './List';
-import { Button,Input } from 'reactstrap';
+import {Input } from 'reactstrap';
 
 const medicineList =[
     {       
