@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import List from './List';
-import {Input } from 'reactstrap';
+import {Input,Button } from 'reactstrap';
 
 const medicineList =[
     {       
@@ -54,16 +54,26 @@ const medicineList =[
 ]
 
 const Medicines = (props) => {
-
-    const[medicine] = useState(medicineList)
+    const[medicine,setMedicine] = useState(medicineList)
     const[search,setSearch] = useState('')
+    const[newmed, setNewmed] = useState({})  
 
-    let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || (val.desc.toLowerCase().includes(search.toLowerCase()))))
-    
+    //Add-New-Medicine
+    const addMed = (e) => {
+        setNewmed(newmed => ({...newmed, [e.target.name]: e.target.value}))        
+    }
+    const addMedList = () => {               
+        console.table(newmed)  
+        setMedicine(medicine => [...medicine,newmed])      
+    }
+
+    //Filter-Data
+    let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || (val.desc.toLowerCase().includes(search.toLowerCase()))))    
     if(search === ''){
         filterData = medicine
     }
 
+    
     return (
         <>  
             <main>
@@ -72,20 +82,26 @@ const Medicines = (props) => {
                         <div className="section-title pb-0">
                             <h2>Medicine List</h2>
                         </div>
-                        {/* <div className="row">
+                        <div className="row">
                             <div className="col-3">
-                                <Input type="text" name="name"  placeholder="Name" />
+                                <Input 
+                                 type="text" 
+                                 name="name"  
+                                 placeholder="Name" 
+                                 onChange={(e) => addMed(e)}
+                                />
+
                             </div>
                             <div className="col-3">
-                                <Input type="text" name="name"  placeholder="Price"/>
+                                <Input type="text" name="price"  placeholder="Price" onChange={(e) => addMed(e)}/>
                             </div>
                             <div className="col-3">
-                                <Input type="text" name="name"  placeholder="Date"/>
+                                <Input type="text" name="date"  placeholder="Date" onChange={(e) => addMed(e)}/>
                             </div>
                             <div className="col-3">
-                                <Button className='bg-primary'>Add Medicine</Button>
+                                <Button className='bg-primary' onClick={() => addMedList()}>Add Medicine</Button>
                             </div>
-                        </div> */}
+                        </div>
                         <div className="row">
                             <div className="col-4 mx-auto pt-3">
                                 <Input type="text" placeholder='Filter as your requirement...' onChange={(e) => setSearch(e.target.value)} />

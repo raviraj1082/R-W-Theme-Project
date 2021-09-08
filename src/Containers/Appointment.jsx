@@ -7,7 +7,7 @@ function Appointment(props) {
   const[error,setError] = useState({})
 
   const valGet = (e) =>{    
-    setValue( value => ({...value, [e.target.name]: e.target.value}))
+    setValue( value => ({...value, [e.target.name]: e.target.value}))    
   }
   
   const validation = () =>{
@@ -16,8 +16,8 @@ function Appointment(props) {
         setError(error => ({...error, name: "Enter your name"}))
         return false
       }else{
-        setError(error => ({...error, name: " "}))
-        return true
+        setError(error => ({...error, name: " "}))        
+        return true        
       }
     }else{
       return false
@@ -30,7 +30,7 @@ function Appointment(props) {
     
     console.log(error)
     if(value.name !== undefined || isValid){
-      setError(error => ({...error, name: " "}))      
+      setError(error => ({...error, name: " "}))  
       return true     
     }else{
       setError(error => ({...error, name: "Enter your name"}))
