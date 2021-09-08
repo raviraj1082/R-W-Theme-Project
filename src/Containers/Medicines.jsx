@@ -57,14 +57,13 @@ const Medicines = (props) => {
     const[medicine,setMedicine] = useState(medicineList)
     const[search,setSearch] = useState('')
     const[newmed, setNewmed] = useState({})  
-
+    
     //Add-New-Medicine
     const addMed = (e) => {
         setNewmed(newmed => ({...newmed, [e.target.name]: e.target.value}))        
     }
-    const addMedList = () => {               
-        console.table(newmed)  
-        setMedicine(medicine => [...medicine,newmed])      
+    const addMedList = () => {                       
+        setMedicine(medicine => [...medicine,newmed])             
     }
 
     //Filter-Data
