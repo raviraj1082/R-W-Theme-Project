@@ -6,6 +6,20 @@ function Appointment(props) {
   const[preVal,setNewVal] = useState({})
   const[error,setError]= useState({})
   
+  // Get-LocalStorage-DATA
+  const getLocalData = () =>{
+    let fromData = localStorage.getItem('fromData')
+
+    if(fromData){
+      return JSON.parse(localStorage.getItem('fromData')) 
+    }
+  }
+
+  // Local-Storage-DATE
+  useEffect(() => {
+    validation()
+    localStorage.setItem('fromData',JSON.stringify(preVal))
+  }, [preVal]) 
   
   const valGet = (e) =>{
     setNewVal( preVal => ({...preVal,[e.target.name]: e.target.value}))
@@ -85,7 +99,7 @@ function Appointment(props) {
     }
   }
   useEffect(() => {
-    validation()
+    validation()    
   }, [preVal]) 
   
   const subitForm = (e) =>{
@@ -122,6 +136,8 @@ function Appointment(props) {
       return false
     }
   }
+
+  
   return (      
     <>
       <main id="main">
@@ -203,7 +219,7 @@ function Appointment(props) {
                 <div className="error-message"></div>
                 <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
               </div>
-              <div className="text-center"><button type="submit">Make an Appointment</button></div>
+              <div className="text-center"><button type="submit" onClick={() => getLocalData()}>Make an Appointment</button></div>
             </form>
           </div>
         </section>
