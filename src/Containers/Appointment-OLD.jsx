@@ -3,29 +3,41 @@ import React, { useState } from 'react';
 
 function Appointment(props) {
 
-  const[preVal,setNewVal] = useState({})
-  const[error,setError]= useState({})
-  
-  
-  const valGet = (e) =>{
-    setNewVal( preVal => ({...preVal,[e.target.name]: e.target.value}))
+  const[value,setValue] = useState({})
+  const[error,setError] = useState({})
+
+  const valGet = (e) =>{    
+    setValue( value => ({...value, [e.target.name]: e.target.value}))    
   }
-  // console.log(preVal)
+  
   const validation = () =>{
-    if(preVal.name !== undefined){
-     
+    if(value.name !== undefined){
+      if(value.name === ''){
+        setError(error => ({...error, name: "Enter your name"}))
+        return false
+      }else{
+        setError(error => ({...error, name: " "}))        
+        return true        
+      }
+    }else{
+      return false
     }
   }
   const subitForm = (e) =>{
+    console.table(value)
     e.preventDefault()
     let isValid = validation()
     
-    if(isValid){
-      console.log('validation')
+    console.log(error)
+    if(value.name !== undefined || isValid){
+      setError(error => ({...error, name: " "}))  
+      return true     
     }else{
-
+      setError(error => ({...error, name: "Enter your name"}))
+      return false
     }
   }
+
   return (      
     <>
       <main id="main">
@@ -85,11 +97,11 @@ function Appointment(props) {
                   <small style={{color:'red'}}>{error.name !== undefined ? error.name : ''}</small>
                 </div>
                 <div className="col-md-4 form-group mt-3">
-                  <select name="department" id="department" className="form-select"  onChange={(e) => valGet(e)}>
-                    <option value="0">Select Department</option>
-                    <option value="ReactJs">ReactJs</option>
-                    <option value="Php">Php</option>
-                    <option value="Graphic">Graphic</option>
+                  <select name="department" id="department" className="form-select" >
+                    <option value>Select Department</option>
+                    <option value="Department 1">Department 1</option>
+                    <option value="Department 2">Department 2</option>
+                    <option value="Department 3">Department 3</option>
                   </select>
                   <div className="validate"></div>
                 </div>
@@ -103,7 +115,7 @@ function Appointment(props) {
                 <div className="error-message"></div>
                 <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
               </div>
-              <div className="text-center"><button type="submit">Make an Appointment</button></div>
+              <div className="text-center"><button type="submit" onSubmit={(e) =>subitForm(e) }>Make an Appointment</button></div>
             </form>
           </div>
         </section>

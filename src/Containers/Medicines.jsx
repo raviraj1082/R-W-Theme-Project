@@ -62,6 +62,7 @@ const Medicines = (props) => {
     const addMed = (e) => {
         setNewmed(newmed => ({...newmed, [e.target.name]: e.target.value}))        
     }
+    console.log(newmed)
     const addMedList = () => {                       
         setMedicine(medicine => [...medicine,newmed])             
     }
