@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import List from './List';
 import {Input,Button } from 'reactstrap';
 
@@ -53,27 +53,45 @@ const medicineList =[
     }
 ]
 
+
 const Medicines = (props) => {
     const[medicine,setMedicine] = useState(medicineList)
     const[search,setSearch] = useState('')
-    const[newmed, setNewmed] = useState({})  
+    const[newmed, setNewmed] = useState()  
+
+    const[store,setStore] = useState(medicineList)
+    
     
     //Add-New-Medicine
     const addMed = (e) => {
         setNewmed(newmed => ({...newmed, [e.target.name]: e.target.value}))        
     }
-    console.log(newmed)
+
     const addMedList = () => {                       
-        setMedicine(medicine => [...medicine,newmed])             
+        setMedicine(medicine => [...medicine,newmed]) 
+        setStore(medicine => [...medicine,newmed])
+        
+        // LOCAL-STORE_DATA
+        let fromData = localStorage.getItem('medicineList')
+        console.log(fromData)
+        if(fromData){
+            return JSON.parse(localStorage.getItem('medicineList')) 
+        }else{
+            setMedicine(medicine => [...medicine,newmed])  
+        }
     }
 
-    //Filter-Data
+    //Filter-DATA
     let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || (val.desc.toLowerCase().includes(search.toLowerCase()))))    
     if(search === ''){
         filterData = medicine
     }
-
     
+    // Local-Storage-DATA
+    useEffect(() => {
+        localStorage.setItem('medicineList',JSON.stringify(store))
+    }, [store])
+
     return (
         <>  
             <main>
