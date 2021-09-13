@@ -44,7 +44,7 @@ const AddMedicine = (e) => {
             {
                 inputVal.map((val, index) =>{
                     return(
-                        <div className="row mb-2" key={index}>
+                        <div className="row my-2" key={index}>
                             <div className="col-2">
                                 <Input type='text' name='name' placeholder='Name' value={val.name} onChange={(e) => handelInputVal(e,index)}/>
                             </div>

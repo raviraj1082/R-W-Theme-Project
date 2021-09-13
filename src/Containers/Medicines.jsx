@@ -83,7 +83,7 @@ const Medicines = (props) => {
         <>  
             <main>
                 <section>
-                    <div className="container">
+                    <div className="container position-relative">
                         <div className="section-title pb-0">
                             <h2>Medicine List</h2>
                         </div>                      
@@ -91,15 +91,15 @@ const Medicines = (props) => {
                             {
                                 addMedList !== false ? <AddMedicine/> : null
                             }                                                         
-                            <div className="col-12 text-center mt-4">
+                            <div className="col-12 text-center">
                                 {
                                     addMedList == false
                                     ? 
-                                        <button type="submit" className='bg-primary btn btn-secondary' onClick={(e) => setAddMedList(true)}>Add Medicine</button>
+                                        <button type="submit" className='bg-primary btn btn-sm btn-secondary' style={{position:'absolute',top:'0',right:'0'}} onClick={(e) => setAddMedList(true)}>Add Medicine</button>
                                     :   
                                         <>
-                                            <button type="submit" className='bg-primary btn btn-secondary' style={{marginRight:'15px'}} onClick={(e) => setAddMedList(false)}>Remove List</button> 
-                                            <button type="submit" className='bg-primary btn btn-secondary' onClick={(e) => addList()}>Add List</button>
+                                            <button type="submit" className='bg-primary btn btn-sm btn-secondary' style={{position:'absolute',top:'0',right:'0'}} onClick={(e) => setAddMedList(false)}>Remove List</button> 
+                                            <button type="submit" className='bg-primary btn btn-secondary my-3' onClick={(e) => addList()}>Add List</button>
                                         </>
                                 }                                 
                             </div> 
