@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import List from './List';
-import {Input,Button } from 'reactstrap';
+import {Input } from 'reactstrap';
+import AddMedicine from './Addmedicine';
 
 const medicineList =[
     {       
@@ -57,41 +58,27 @@ const medicineList =[
 const Medicines = (props) => {
     const[medicine,setMedicine] = useState(medicineList)
     const[search,setSearch] = useState('')
-    const[newmed, setNewmed] = useState()  
-
-    const[store,setStore] = useState(medicineList)
-    
+    const[addMedList,setAddMedList] = useState(false)
+    //const[newmed, setNewmed] = useState({name:'',price:'', quantity:'',expiry:''})  
     
     //Add-New-Medicine
-    const addMed = (e) => {
-        setNewmed(newmed => ({...newmed, [e.target.name]: e.target.value}))        
+    const addMed = (e) => {   
+        //setNewmed(newmed => ({...newmed, [e.target.name]: e.target.value}))       
     }
+    const addList = (e) =>{
 
-    const addMedList = () => {                       
-        setMedicine(medicine => [...medicine,newmed]) 
-        setStore(medicine => [...medicine,newmed])
-        
-        // LOCAL-STORE_DATA
-        let fromData = localStorage.getItem('medicineList')
-        console.log(fromData)
-        if(fromData){
-            return JSON.parse(localStorage.getItem('medicineList')) 
-        }else{
-            setMedicine(medicine => [...medicine,newmed])  
-        }
     }
+    // const addMedList = (e) => {            
+    //     e.preventDefault() 
+    //     //setMedicine(medicine => [...medicine,newmed])              
+    // }
 
     //Filter-DATA
-    let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || (val.desc.toLowerCase().includes(search.toLowerCase()))))    
+    let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || val.desc.toLowerCase().includes(search.toLowerCase().substr())))    
     if(search === ''){
         filterData = medicine
     }
-    
-    // Local-Storage-DATA
-    useEffect(() => {
-        localStorage.setItem('medicineList',JSON.stringify(store))
-    }, [store])
-
+ 
     return (
         <>  
             <main>
@@ -99,36 +86,33 @@ const Medicines = (props) => {
                     <div className="container">
                         <div className="section-title pb-0">
                             <h2>Medicine List</h2>
+                        </div>                      
+                        <div className="row">
+                            {
+                                addMedList !== false ? <AddMedicine/> : null
+                            }                                                         
+                            <div className="col-12 text-center mt-4">
+                                {
+                                    addMedList == false
+                                    ? 
+                                        <button type="submit" className='bg-primary btn btn-secondary' onClick={(e) => setAddMedList(true)}>Add Medicine</button>
+                                    :   
+                                        <>
+                                            <button type="submit" className='bg-primary btn btn-secondary' style={{marginRight:'15px'}} onClick={(e) => setAddMedList(false)}>Remove List</button> 
+                                            <button type="submit" className='bg-primary btn btn-secondary' onClick={(e) => addList()}>Add List</button>
+                                        </>
+                                }                                 
+                            </div> 
                         </div>
                         <div className="row">
-                            <div className="col-3">
-                                <Input 
-                                 type="text" 
-                                 name="name"  
-                                 placeholder="Name" 
-                                 onChange={(e) => addMed(e)}
-                                />
-
-                            </div>
-                            <div className="col-3">
-                                <Input type="text" name="price"  placeholder="Price" onChange={(e) => addMed(e)}/>
-                            </div>
-                            <div className="col-3">
-                                <Input type="text" name="date"  placeholder="Date" onChange={(e) => addMed(e)}/>
-                            </div>
-                            <div className="col-3">
-                                <Button className='bg-primary' onClick={() => addMedList()}>Add Medicine</Button>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-4 mx-auto pt-3">
-                                <Input type="text" placeholder='Filter as your requirement...' onChange={(e) => setSearch(e.target.value)} />
+                            <div className="col-6 mx-auto pt-3">
+                                <Input type="text" placeholder='Filter as your requirement...(name/price/quantity/date/desc)' onChange={(e) => setSearch(e.target.value)} />
                             </div>
                         </div>
                         <div className="row">                            
                             {
-                                filterData.map((val,index) => <List key={index+1}  name={val.name} price={val.price} date={val.date} desc={val.desc}/>)
-                            }
+                                filterData.map((val,index) =><List key={index+1}  name={val.name} price={val.price} date={val.date} desc={val.desc}/>)
+                            }                           
                         </div>
                     </div>
                 </section>

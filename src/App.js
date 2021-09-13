@@ -24,16 +24,15 @@ function App() {
     <BrowserRouter>  
         <Header/>
         <Switch>
-          <Route exact path="/" component={Home}></Route>
           <Route exact path="/Home" component={Home}></Route>
-          <Route exact path="/Departmet" component={Departmet}></Route>
-          <Route exact path="/Doctors" component={Doctors}></Route>   
-          <Route exact path="/Medicines" component={Medicines}></Route>
-          <Route exact path="/Addmedicine" component={Addmedicine}></Route>   
-          <Route exact path="/About" component={About}></Route>  
-          <Route exact path="/Contact" component={Contact}></Route>
-          <Route exact path="/Appointment" component={Appointment}></Route> 
-          <Route exact path="/Login" component={Login}></Route>   
+          <Route path="/Departmet" component={Departmet}></Route>
+          <Route path="/Doctors" component={Doctors}></Route>   
+          <Route path="/Medicines" component={Medicines}></Route>
+          <Route path="/Addmedicine" component={Addmedicine}></Route>   
+          <Route path="/About" component={About}></Route>  
+          <Route path="/Contact" component={Contact}></Route>
+          <Route path="/Appointment" component={Appointment}></Route> 
+          <Route path="/Login" component={Login}></Route>   
         </Switch>
         <Footer/>          
     </BrowserRouter>

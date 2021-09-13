@@ -98,6 +98,7 @@ function Appointment(props) {
       return true
     }
   }
+  
   useEffect(() => {
     validation()    
   }, [preVal]) 

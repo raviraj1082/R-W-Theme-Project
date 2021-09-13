@@ -22,20 +22,20 @@ const Header = () => {
                 <header id="header" className="fixed-top">
                     <div className="container d-flex align-items-center">
                         <div className="logo">
-                            <NavLink className="nav-link scrollto" to="/">
+                            <NavLink className="nav-link scrollto" to="/Home">
                                 <h1 className="logo me-auto">City</h1><br />
                                 <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>                           
                             </NavLink>
                         </div>
                         <nav id="navbar" className="navbar order-last order-lg-0">
                             <ul>
-                                <li><NavLink className="nav-link scrollto" to="/">Home</NavLink></li>
-                                <li><NavLink className="nav-link scrollto" to="/Departmet">Departments</NavLink></li>
-                                <li><NavLink className="nav-link scrollto" to="/Doctors">Doctors</NavLink></li>
-                                <li><NavLink className="nav-link scrollto" to="/Medicines">Medicine</NavLink></li>
-                                <li><NavLink className="nav-link scrollto" to="/Addmedicine">Add Medicine</NavLink></li>
-                                <li><NavLink className="nav-link scrollto " to="/About">About</NavLink></li>
-                                <li><NavLink className="nav-link scrollto" to="/Contact">Contact</NavLink></li>
+                                <li><NavLink className="nav-link" to="/Home">Home</NavLink></li>
+                                <li><NavLink className="nav-link" to="/Departmet">Departments</NavLink></li>
+                                <li><NavLink className="nav-link" to="/Doctors">Doctors</NavLink></li>
+                                <li><NavLink className="nav-link" to="/Medicines">Medicine</NavLink></li>
+                                <li><NavLink className="nav-link" to="/Addmedicine">Add Medicine</NavLink></li>
+                                <li><NavLink className="nav-link" to="/About">About</NavLink></li>
+                                <li><NavLink className="nav-link" to="/Contact">Contact</NavLink></li>
                             </ul>
                             <i className="bi bi-list mobile-nav-toggle" />
                         </nav>
