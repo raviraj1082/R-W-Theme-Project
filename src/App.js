@@ -14,7 +14,6 @@ import Medicines from './Containers/Medicines';
 import About from './Containers/About';
 import Contact from './Containers/Contact';
 import Appointment from './Containers/Appointment';
-import Addmedicine from './Containers/Addmedicine';
 import Login from './Containers/Login';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 

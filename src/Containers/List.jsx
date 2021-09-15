@@ -4,9 +4,9 @@ import {Card,CardBody} from 'reactstrap';
 const List = (props) => {
     return (
         <>           
-            <div className='col-3 pt-4'>
+            <div className='col-3 pt-4' id={props.id}>
                 <Card>
-                    <CardBody>
+                    <CardBody>                       
                         {
                             props.index !== undefined ? <h3>{props.index}</h3> : null
                         }

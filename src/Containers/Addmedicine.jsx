@@ -1,12 +1,20 @@
 import React,{useState} from 'react';
-import {Form,Input} from 'reactstrap';
+import {Form,Input,Button} from 'reactstrap';
 
 const AddMedicine = (e) => {
     const[inputVal , setInputval] = useState([
         {name:'',price:'', quantity:'',expiry:'',desc:''}
     ])
-
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        
+        
+        alert("Medicine added successfully.")
+        console.table(inputVal)
+        setInputval([{name:'',price:'', quantity:'',expiry:'',desc:''}])
+    }
     const handelInputVal= (e,index) =>{
+        
         const values = [...inputVal]
 
         if(e.target.name === 'name'){
@@ -20,23 +28,24 @@ const AddMedicine = (e) => {
         }else if(e.target.name === 'desc'){
             values[index].desc = e.target.value
         }
-        setInputval(values)
+        setInputval(values)       
     }
 
-    const addFeild = (index) =>{
+    const addFieldUp = (index) =>{
+        const values = [...inputVal]
+        values.splice(index , 0, {name:'',price:'', quantity:'',expiry:'',desc:''});
+        setInputval(values)
+    }
+    const addFieldDown = (index) =>{
         const values = [...inputVal]
         values.splice(index + 1 , 0, {name:'',price:'', quantity:'',expiry:'',desc:''});
         setInputval(values)
-    }
+    }    
     
     const removeFeild = (index) =>{
         const values = [...inputVal]
         values.splice(index,1)
         setInputval(values)
-    }
-
-    const handleSubmit = (e) =>{
-        e.preventDefault()
     }
     return (
         <>
@@ -49,25 +58,36 @@ const AddMedicine = (e) => {
                                 <Input type='text' name='name' placeholder='Name' value={val.name} onChange={(e) => handelInputVal(e,index)}/>
                             </div>
                             <div className="col-2">
-                                <Input type='text' name='price' placeholder='Price' value={val.price} onChange={(e) => handelInputVal(e,index)}/>
+                                <Input type='number' name='price' placeholder='Price' value={val.price} onChange={(e) => handelInputVal(e,index)}/>
                             </div>
                             <div className="col-2">
-                                <Input type='text' name='quantity' placeholder='Quantity' value={val.quantity} onChange={(e) => handelInputVal(e,index)}/>
+                                <Input type='number' name='quantity' placeholder='Quantity' value={val.quantity} onChange={(e) => handelInputVal(e,index)}/>
                             </div>
                             <div className="col-2">
-                                <Input type='text' name='expiry' placeholder='Expiry' value={val.expiry} onChange={(e) => handelInputVal(e,index)}/>
+                                <Input type='number' name='expiry' placeholder='Expiry' value={val.expiry} onChange={(e) => handelInputVal(e,index)}/>
                             </div>           
                             <div className="col-2">
                                 <Input type="text" name="desc"  placeholder="Desc" value={val.desc} onChange={(e) => handelInputVal(e,index)}/>
                             </div>                             
                             <div className="col-2">
-                                <button className='btn btn-primary'style={{marginRight:'8px'}} onClick={(e) => addFeild(index)}>+</button>
-                                <button className='btn btn-danger' onClick={(e) => removeFeild(index)}>-</button>
+                                <Button color='primary' style={{marginRight:'8px'}} onClick={() => addFieldUp(index)}>+ &#8593;</Button>
+                                <Button color='primary' style={{marginRight:'8px'}} onClick={() => addFieldDown(index)}>+ &#8595;</Button>
+                                {
+                                    inputVal.length !== 1 ? 
+                                        <Button color='danger' onClick={() => removeFeild(index)}>-</Button>
+                                    :
+                                        null
+                                    
+                                }                                
                             </div>                                       
                         </div>
                     )
                 })
-            }                                                   
+                
+            }    
+            <div className="col-12 text-center">
+                <button type="submit" className='bg-primary btn btn-secondary my-3'>Add Medicine</button>                              
+            </div>                                                
             </Form>                                         
         </>
     );

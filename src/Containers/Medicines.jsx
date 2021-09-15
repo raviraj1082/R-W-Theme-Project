@@ -1,52 +1,58 @@
 import React, { useState } from 'react';
 import List from './List';
 import {Input } from 'reactstrap';
-import AddMedicine from './Addmedicine';
+import Addmedicine from './Addmedicine';
 
-const medicineList =[
-    {       
+const medicineData =[
+    {   id:1,
         name:'Ativan',
         price:280.00,
         date:'28-10-2021',
         desc:'kidney or liver disease'
     },
-    {
+    {   id:2,
         name:'Entresto',
         price:1080.00,
         date:'08-02-2021',
         desc:'liver disease/diabetes'
     },
-    {
+    {   
+        id:3,
         name:'Ozempic',
         price:987.00,
         date:'31-01-2023',
         desc:'low blood sugar'
     },
-    {
+    {   
+        id:4,
         name:'Methotrexate',
         price:364.00,
         date:'22-11-2022',
         desc:'low blood cell counts'
     },
-    {
+    {   
+        id:5,
         name:'Probuphine ',
         price:1245.00,
         date:'16-06-2021',
         desc:'mental illness or psychosis'
     },
-    {
+    {   
+        id:6,
         name:'Cymbalta',
         price:110.00,
         date:'14-03-2018',
         desc:'slow digestion'
     },
-    {
+    {   
+        id:7,
         name:'Ativan',
         price:280.00,
         date:'28-10-2021',
         desc:'kidney or liver disease'
     },
-    {
+    {   
+        id:8,
         name:'Methotrexate',
         price:364.00,
         date:'22-11-2022',
@@ -54,29 +60,23 @@ const medicineList =[
     }
 ]
 
-
-const Medicines = (props) => {
-    const[medicine,setMedicine] = useState(medicineList)
+const Medicines = (props) => {    
     const[search,setSearch] = useState('')
     const[addMedList,setAddMedList] = useState(false)
-    //const[newmed, setNewmed] = useState({name:'',price:'', quantity:'',expiry:''})  
-    
-    //Add-New-Medicine
-    const addMed = (e) => {   
-        //setNewmed(newmed => ({...newmed, [e.target.name]: e.target.value}))       
-    }
-    const addList = (e) =>{
+   
+    const localData = localStorage.getItem("medicineData")
+    let localNewData;
 
+    if(localData == null){
+        localStorage.setItem("MTable",JSON.stringify(medicineData))
+        localNewData = medicineData
+    }else{
+        localNewData = JSON.parse(medicineData)
     }
-    // const addMedList = (e) => {            
-    //     e.preventDefault() 
-    //     //setMedicine(medicine => [...medicine,newmed])              
-    // }
-
     //Filter-DATA
-    let filterData = medicine.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || val.desc.toLowerCase().includes(search.toLowerCase().substr())))    
+    let filterData = localNewData.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) || val.desc.toLowerCase().includes(search.toLowerCase().substr())))    
     if(search === ''){
-        filterData = medicine
+        filterData = localNewData
     }
  
     return (
@@ -89,20 +89,16 @@ const Medicines = (props) => {
                         </div>                      
                         <div className="row">
                             {
-                                addMedList !== false ? <AddMedicine/> : null
-                            }                                                         
+                                addMedList !== false ? <Addmedicine /> : null
+                            }
                             <div className="col-12 text-center">
                                 {
-                                    addMedList == false
-                                    ? 
-                                        <button type="submit" className='bg-primary btn btn-sm btn-secondary' style={{position:'absolute',top:'0',right:'0'}} onClick={(e) => setAddMedList(true)}>Add Medicine</button>
-                                    :   
-                                        <>
-                                            <button type="submit" className='bg-primary btn btn-sm btn-secondary' style={{position:'absolute',top:'0',right:'0'}} onClick={(e) => setAddMedList(false)}>Remove List</button> 
-                                            <button type="submit" className='bg-primary btn btn-secondary my-3' onClick={(e) => addList()}>Add List</button>
-                                        </>
-                                }                                 
-                            </div> 
+                                    addMedList !== false ?
+                                        <button type="submit" className='bg-primary btn btn-sm btn-secondary' style={{minInlineSize:'115px', position: 'absolute', top: '0', right: '0' }} onClick={(e) => setAddMedList(false)}> - Remove List</button>
+                                        :
+                                        <button type="submit" className='bg-primary btn btn-sm btn-secondary' style={{minInlineSize:'115px', position: 'absolute', top: '0', right: '0' }} onClick={(e) => setAddMedList(true)}> + Add Medicine</button>
+                                }
+                            </div>
                         </div>
                         <div className="row">
                             <div className="col-6 mx-auto pt-3">
@@ -111,7 +107,7 @@ const Medicines = (props) => {
                         </div>
                         <div className="row">                            
                             {
-                                filterData.map((val,index) =><List key={index+1}  name={val.name} price={val.price} date={val.date} desc={val.desc}/>)
+                                filterData.map((val,index) =><List key={index+1} id={index + 1}  name={val.name} price={val.price} date={val.date} desc={val.desc}/>)
                             }                           
                         </div>
                     </div>
