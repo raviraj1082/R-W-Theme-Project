@@ -17,7 +17,10 @@ const List = (props) => {
                             props.price !== undefined ? <h5>Price:- {props.price}</h5> : null
                         }
                         {
-                            props.date !== undefined ? <h6>Date:- {props.date}</h6> : null
+                            props.price !== undefined ? <h5>Quantity:- {props.quantity}</h5> : null
+                        }
+                        {
+                            props.expiry !== undefined ? <h6>Expiry:- {props.expiry}</h6> : null
                         }
                         {
                             props.desc !== undefined ? <p>Desc:- {props.desc}</p> : null

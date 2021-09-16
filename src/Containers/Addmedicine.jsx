@@ -7,10 +7,21 @@ const AddMedicine = (e) => {
     ])
     const handleSubmit = (e) =>{
         e.preventDefault()
+        let localData = JSON.parse(localStorage.getItem("medicineData"))
+        const values = [...inputVal]
+        
+        let n = localData.length + 1
+
+        let data = values.map((v) => ({...v,"id":n++}))
+        data.map((d) => localData.push(d))
         
         
+        localStorage.removeItem('medicineData')
+        localStorage.setItem('medicineData',JSON.stringify(localData))
+
+        console.log(localData)        
         alert("Medicine added successfully.")
-        console.table(inputVal)
+        console.log(inputVal)
         setInputval([{name:'',price:'', quantity:'',expiry:'',desc:''}])
     }
     const handelInputVal= (e,index) =>{
@@ -30,7 +41,6 @@ const AddMedicine = (e) => {
         }
         setInputval(values)       
     }
-
     const addFieldUp = (index) =>{
         const values = [...inputVal]
         values.splice(index , 0, {name:'',price:'', quantity:'',expiry:'',desc:''});
@@ -40,8 +50,7 @@ const AddMedicine = (e) => {
         const values = [...inputVal]
         values.splice(index + 1 , 0, {name:'',price:'', quantity:'',expiry:'',desc:''});
         setInputval(values)
-    }    
-    
+    }        
     const removeFeild = (index) =>{
         const values = [...inputVal]
         values.splice(index,1)
