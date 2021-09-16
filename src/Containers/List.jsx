@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card,CardBody} from 'reactstrap';
+import {Card,CardBody,Button} from 'reactstrap';
 
 const List = (props) => {
     return (
@@ -24,7 +24,16 @@ const List = (props) => {
                         }
                         {
                             props.desc !== undefined ? <p>Desc:- {props.desc}</p> : null
-                        }
+                        } 
+                        {
+                            props.btnGroup === true ? 
+                                <>
+                                    <Button onClick={props.editBtn} outline color="primary" size="sm" style={{marginRight:'10px'}}>Edit {props.propsBtnId}</Button>
+                                    <Button onClick={props.deleteBtn} outline color="danger" size="sm">Delete {props.propsBtnId}</Button> 
+                                </>
+                            :
+                                 null
+                        }                                                                                                  
                     </CardBody>
                 </Card>
             </div>

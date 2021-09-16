@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {Form,Input,Button} from 'reactstrap';
 
-const AddMedicine = (e) => {
+const AddMedicine = (props) => {
     const[inputVal , setInputval] = useState([
         {name:'',price:'', quantity:'',expiry:'',desc:''}
     ])
@@ -16,12 +16,10 @@ const AddMedicine = (e) => {
         data.map((d) => localData.push(d))
         
         
-        localStorage.removeItem('medicineData')
+        ///localStorage.removeItem('medicineData')
         localStorage.setItem('medicineData',JSON.stringify(localData))
 
-        console.log(localData)        
         alert("Medicine added successfully.")
-        console.log(inputVal)
         setInputval([{name:'',price:'', quantity:'',expiry:'',desc:''}])
     }
     const handelInputVal= (e,index) =>{
@@ -95,9 +93,12 @@ const AddMedicine = (e) => {
                 
             }    
             <div className="col-12 text-center">
-                <button type="submit" className='bg-primary btn btn-secondary my-3'>Add Medicine</button>                              
+                <button type="submit" className='bg-primary btn btn-secondary my-3' onClick={props.loadRef}>Add Medicine</button>                              
             </div>                                                
-            </Form>                                         
+            </Form> 
+            {/* <div className="col-12 text-center">                
+                <Button outline color="danger"  onClick={props.loadRef}>Load</Button>                               
+            </div>                                           */}
         </>
     );
 }

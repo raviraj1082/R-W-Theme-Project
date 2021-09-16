@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import List from './List';
 import {Input } from 'reactstrap';
 import Addmedicine from './Addmedicine';
@@ -71,7 +71,13 @@ const data =[
 const Medicines = (props) => {    
     const[search,setSearch] = useState('')
     const[addMedList,setAddMedList] = useState(false)
-   
+    const[updateData,setUpdateData] = useState('')
+    
+    const loadRefFun = () =>{
+        setUpdateData({})
+        alert('Load Data')
+    }
+
     const localData = localStorage.getItem("medicineData")
     let localMData;
 
@@ -81,12 +87,30 @@ const Medicines = (props) => {
     }else{
         localMData = JSON.parse(localData)
     }
-    //Filter-DATA
+
+    //DELETE-MED-DATA
+    const deleteFun = (index) =>{  
+
+        filterData.map((d) => {
+            if(d.id === index){                                 
+                return(
+                    alert(d.id +' '+ index)
+                )                                                
+            }                                
+        }); 
+    }    
+    
+    //EDIT-MED-DATA
+    const editFun = (index) =>{
+        alert(index)
+    }
+    
+    //FILTER-ALL-DATA
     let filterData = localMData.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) ||  (val.quantity.toString().includes(search)) || (val.expiry.toString().includes(search)) || val.desc.toLowerCase().includes(search.toLowerCase().substr())))    
     if(search === ''){
         filterData = localMData
-    }
- 
+    }  
+
     return (
         <>  
             <main>
@@ -97,8 +121,9 @@ const Medicines = (props) => {
                         </div>                      
                         <div className="row">
                             {
-                                addMedList !== false ? <Addmedicine /> : null
+                                addMedList !== false ? <Addmedicine loadRef={() => loadRefFun()} /> : null
                             }
+                            {/* <Addmedicine loadRef={() => loadRefFun()}/> */}
                             <div className="col-12 text-center">
                                 {
                                     addMedList !== false ?
@@ -115,8 +140,10 @@ const Medicines = (props) => {
                         </div>
                         <div className="row">                            
                             {
-                                filterData.map((val,index) =><List key={index+1} id={index + 1}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc}/>)
-                            }                           
+                                filterData.map((val,index) =>(
+                                    <List key={index+1} id={index + 1}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc} btnGroup={true} editBtn={() => editFun(index + 1)} deleteBtn={() => deleteFun(index + 1)} propsBtnId={index + 1}/>                                   
+                                ))
+                            }                                                      
                         </div>
                     </div>
                 </section>
