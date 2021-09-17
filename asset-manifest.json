@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/R-W-Theme-Project/static/css/main.b51f6081.chunk.css",
+    "main.js": "/R-W-Theme-Project/static/js/main.4d110551.chunk.js",
+    "main.js.map": "/R-W-Theme-Project/static/js/main.4d110551.chunk.js.map",
+    "runtime-main.js": "/R-W-Theme-Project/static/js/runtime-main.b2883265.js",
+    "runtime-main.js.map": "/R-W-Theme-Project/static/js/runtime-main.b2883265.js.map",
+    "static/js/2.74e314a1.chunk.js": "/R-W-Theme-Project/static/js/2.74e314a1.chunk.js",
+    "static/js/2.74e314a1.chunk.js.map": "/R-W-Theme-Project/static/js/2.74e314a1.chunk.js.map",
+    "index.html": "/R-W-Theme-Project/index.html",
+    "static/css/main.b51f6081.chunk.css.map": "/R-W-Theme-Project/static/css/main.b51f6081.chunk.css.map",
+    "static/js/2.74e314a1.chunk.js.LICENSE.txt": "/R-W-Theme-Project/static/js/2.74e314a1.chunk.js.LICENSE.txt",
+    "static/media/style.css": "/R-W-Theme-Project/static/media/hero-bg.728d7976.jpg",
+    "static/media/bootstrap-icons.css": "/R-W-Theme-Project/static/media/bootstrap-icons.0f69dcdb.woff",
+    "static/media/boxicons.min.css": "/R-W-Theme-Project/static/media/boxicons.cbd149c5.ttf",
+    "static/media/departments-2.jpg": "/R-W-Theme-Project/static/media/departments-2.24f96ad2.jpg",
+    "static/media/departments-3.jpg": "/R-W-Theme-Project/static/media/departments-3.e01dc5e8.jpg",
+    "static/media/departments-4.jpg": "/R-W-Theme-Project/static/media/departments-4.b620f488.jpg",
+    "static/media/doctors-2.jpg": "/R-W-Theme-Project/static/media/doctors-2.b08182f5.jpg",
+    "static/media/doctors-3.jpg": "/R-W-Theme-Project/static/media/doctors-3.da2abe21.jpg",
+    "static/media/all.min.css": "/R-W-Theme-Project/static/media/fa-solid-900.efbd5d20.eot",
+    "static/media/gallery-1.jpg": "/R-W-Theme-Project/static/media/gallery-1.3cbdf6a7.jpg",
+    "static/media/gallery-2.jpg": "/R-W-Theme-Project/static/media/gallery-2.887e433c.jpg",
+    "static/media/gallery-3.jpg": "/R-W-Theme-Project/static/media/gallery-3.4e5f0090.jpg",
+    "static/media/gallery-6.jpg": "/R-W-Theme-Project/static/media/gallery-6.b6c941d6.jpg",
+    "static/media/remixicon.css": "/R-W-Theme-Project/static/media/remixicon.f2616f59.ttf",
+    "static/media/testimonials-1.jpg": "/R-W-Theme-Project/static/media/testimonials-1.8343e630.jpg",
+    "static/media/testimonials-2.jpg": "/R-W-Theme-Project/static/media/testimonials-2.8e69dc87.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b2883265.js",
+    "static/js/2.74e314a1.chunk.js",
+    "static/css/main.b51f6081.chunk.css",
+    "static/js/main.4d110551.chunk.js"
+  ]
+}
