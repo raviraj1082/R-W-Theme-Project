@@ -15,7 +15,7 @@ import About from './Containers/About';
 import Contact from './Containers/Contact';
 import Appointment from './Containers/Appointment';
 import Login from './Containers/Login';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
 
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
     <BrowserRouter>  
         <Header/>
         <Switch>
-          <Route exact path="/" component={Home}></Route>
+          <Route exact path="/"><Home/></Route>
           <Route path="/Home" component={Home}></Route>
           <Route path="/Departmet" component={Departmet}></Route>
           <Route path="/Doctors" component={Doctors}></Route>   

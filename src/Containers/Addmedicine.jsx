@@ -11,7 +11,7 @@ const AddMedicine = (props) => {
         const values = [...inputVal]
         
         let n = localData.length + 1
-
+        
         let data = values.map((v) => ({...v,"id":n++}))
         data.map((d) => localData.push(d))
         
