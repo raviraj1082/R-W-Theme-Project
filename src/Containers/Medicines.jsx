@@ -71,11 +71,10 @@ const data =[
 const Medicines = (props) => {    
     const[search,setSearch] = useState('')
     const[addMedList,setAddMedList] = useState(false)
-    const[updateData,setUpdateData] = useState('')
+    const[,setUpdateData] = useState({})
     
     const loadRefFun = () =>{
         setUpdateData({})
-        alert('Load Data')
     }
 
     const localData = localStorage.getItem("medicineData")
@@ -89,15 +88,12 @@ const Medicines = (props) => {
     }
 
     //DELETE-MED-DATA
-    const deleteFun = (index) =>{  
-
-        filterData.map((d) => {
-            if(d.id === index){                                 
-                return(
-                    alert(d.id +' '+ index)
-                )                                                
-            }                                
-        }); 
+    const deleteMed = (id) =>{  
+        let delData = localMData.filter((d) => d.id !== id)
+        alert("Medicine delete   successfully.")
+        localStorage.removeItem('medicineData')
+        localStorage.setItem("medicineData",JSON.stringify(delData))
+        setUpdateData({})
     }    
     
     //EDIT-MED-DATA
@@ -122,8 +118,7 @@ const Medicines = (props) => {
                         <div className="row">
                             {
                                 addMedList !== false ? <Addmedicine loadRef={() => loadRefFun()} /> : null
-                            }
-                            {/* <Addmedicine loadRef={() => loadRefFun()}/> */}
+                            }                           
                             <div className="col-12 text-center">
                                 {
                                     addMedList !== false ?
@@ -141,7 +136,7 @@ const Medicines = (props) => {
                         <div className="row">                            
                             {
                                 filterData.map((val,index) =>(
-                                    <List key={index+1} id={index + 1}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc} btnGroup={true} editBtn={() => editFun(index + 1)} deleteBtn={() => deleteFun(index + 1)} propsBtnId={index + 1}/>                                   
+                                    <List key={index}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc} editBtn={() => editFun()} deleteBtn={() => deleteMed(val.id)} btnId={val.id}/>                                   
                                 ))
                             }                                                      
                         </div>

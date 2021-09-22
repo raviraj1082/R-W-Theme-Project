@@ -10,17 +10,18 @@ const AddMedicine = (props) => {
         let localData = JSON.parse(localStorage.getItem("medicineData"))
         const values = [...inputVal]
         
-        let n = localData.length + 1
+        let i = localData[localData.length - 1].id
         
-        let data = values.map((v) => ({...v,"id":n++}))
+        let data = values.map((v) => ({...v, "id" : i++}))
         data.map((d) => localData.push(d))
         
-        
-        ///localStorage.removeItem('medicineData')
+        //localStorage.removeItem('medicineData')
         localStorage.setItem('medicineData',JSON.stringify(localData))
 
         alert("Medicine added successfully.")
+        props.loadRef()
         setInputval([{name:'',price:'', quantity:'',expiry:'',desc:''}])
+        console.log(localData)
     }
     const handelInputVal= (e,index) =>{
         
@@ -83,8 +84,7 @@ const AddMedicine = (props) => {
                                     inputVal.length !== 1 ? 
                                         <Button color='danger' onClick={() => removeFeild(index)}>-</Button>
                                     :
-                                        null
-                                    
+                                        null                                    
                                 }                                
                             </div>                                       
                         </div>
@@ -93,12 +93,9 @@ const AddMedicine = (props) => {
                 
             }    
             <div className="col-12 text-center">
-                <button type="submit" className='bg-primary btn btn-secondary my-3' onClick={props.loadRef}>Add Medicine</button>                              
+                <button type="submit" className='bg-primary btn btn-secondary my-3'>Add Medicine</button>                              
             </div>                                                
             </Form> 
-            {/* <div className="col-12 text-center">                
-                <Button outline color="danger"  onClick={props.loadRef}>Load</Button>                               
-            </div>                                           */}
         </>
     );
 }

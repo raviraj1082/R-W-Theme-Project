@@ -4,7 +4,7 @@ import {Card,CardBody,Button} from 'reactstrap';
 const List = (props) => {
     return (
         <>           
-            <div className='col-3 pt-4' id={props.id}>
+            <div className='col-3 pt-4'>
                 <Card>
                     <CardBody>                       
                         {
@@ -25,15 +25,8 @@ const List = (props) => {
                         {
                             props.desc !== undefined ? <p>Desc:- {props.desc}</p> : null
                         } 
-                        {
-                            props.btnGroup === true ? 
-                                <>
-                                    <Button onClick={props.editBtn} outline color="primary" size="sm" style={{marginRight:'10px'}}>Edit {props.propsBtnId}</Button>
-                                    <Button onClick={props.deleteBtn} outline color="danger" size="sm">Delete {props.propsBtnId}</Button> 
-                                </>
-                            :
-                                 null
-                        }                                                                                                  
+                        <Button onClick={props.editBtn} outline color="primary" size="sm" style={{marginRight:'10px'}}>Edit</Button>
+                        <Button onClick={props.deleteBtn} outline color="danger" size="sm">Delete {props.btnId}</Button>                                                                                   
                     </CardBody>
                 </Card>
             </div>
