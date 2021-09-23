@@ -7,12 +7,16 @@ const AddMedicine = (props) => {
     ])
     const handleSubmit = (e) =>{
         e.preventDefault()
+       
         let localData = JSON.parse(localStorage.getItem("medicineData"))
         const values = [...inputVal]
         
-        let i = localData[localData.length - 1].id
+        let i = localData[localData.length - 1].id + 1
         
         let data = values.map((v) => ({...v, "id" : i++}))
+        // data.map((d) => {
+        //     data == null ?  alert("Please fill data...") : localData.push(d)                     
+        // }       
         data.map((d) => localData.push(d))
         
         //localStorage.removeItem('medicineData')
@@ -21,7 +25,7 @@ const AddMedicine = (props) => {
         alert("Medicine added successfully.")
         props.loadRef()
         setInputval([{name:'',price:'', quantity:'',expiry:'',desc:''}])
-        console.log(localData)
+    
     }
     const handelInputVal= (e,index) =>{
         
@@ -72,7 +76,14 @@ const AddMedicine = (props) => {
                                 <Input type='number' name='quantity' placeholder='Quantity' value={val.quantity} onChange={(e) => handelInputVal(e,index)}/>
                             </div>
                             <div className="col-2">
-                                <Input type='number' name='expiry' placeholder='Expiry' value={val.expiry} onChange={(e) => handelInputVal(e,index)}/>
+                                <Input type="select" name='expiry' placeholder='Expiry' value={val.expiry} onChange={(e) => handelInputVal(e,index)} style={{backgroundColor:'transparent'}}>
+                                    <option>Expiry</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                    <option>2025</option>
+                                </Input>                               
                             </div>           
                             <div className="col-2">
                                 <Input type="text" name="desc"  placeholder="Desc" value={val.desc} onChange={(e) => handelInputVal(e,index)}/>

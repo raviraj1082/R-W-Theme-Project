@@ -44,7 +44,22 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-animation: animate-preloader 1s linear infinite;
   animation: animate-preloader 1s linear infinite;
 }
+select option:first-child{
+  display:none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+select option{
+  padding:5px 0;
+}
 @-webkit-keyframes animate-preloader {
   0% {
     transform: rotate(0deg);

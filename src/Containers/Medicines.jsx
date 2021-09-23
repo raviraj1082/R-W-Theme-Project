@@ -90,7 +90,7 @@ const Medicines = (props) => {
     //DELETE-MED-DATA
     const deleteMed = (id) =>{  
         let delData = localMData.filter((d) => d.id !== id)
-        alert("Medicine delete   successfully.")
+        alert("Medicine delete successfully.")
         localStorage.removeItem('medicineData')
         localStorage.setItem("medicineData",JSON.stringify(delData))
         setUpdateData({})
@@ -129,7 +129,7 @@ const Medicines = (props) => {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-6 mx-auto pt-3">
+                            <div className="col-6 mx-auto pt-3">                                
                                 <Input type="text" placeholder='Filter as your requirement...(name/price/quantity/expiry/desc)' onChange={(e) => setSearch(e.target.value)} />
                             </div>
                         </div>
