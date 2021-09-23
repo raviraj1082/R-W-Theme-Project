@@ -97,8 +97,9 @@ const Medicines = (props) => {
     }    
     
     //EDIT-MED-DATA
-    const editFun = (index) =>{
-        alert(index)
+    const editFun = (id) =>{
+        let delData = localMData.filter((d) => d.id === id)        
+        console.log(delData)        
     }
     
     //FILTER-ALL-DATA
@@ -136,7 +137,7 @@ const Medicines = (props) => {
                         <div className="row">                            
                             {
                                 filterData.map((val,index) =>(
-                                    <List key={index}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc} editBtn={() => editFun()} deleteBtn={() => deleteMed(val.id)} btnId={val.id}/>                                   
+                                    <List key={index}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc} editBtn={() => editFun(val.id)} deleteBtn={() => deleteMed(val.id)} btnId={val.id}/>                                   
                                 ))
                             }                                                      
                         </div>

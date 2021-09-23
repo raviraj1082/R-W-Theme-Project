@@ -5,6 +5,7 @@ const AddMedicine = (props) => {
     const[inputVal , setInputval] = useState([
         {name:'',price:'', quantity:'',expiry:'',desc:''}
     ])
+    const[updateData,setUpdateData] = useState({})
     const handleSubmit = (e) =>{
         e.preventDefault()
        
@@ -27,6 +28,7 @@ const AddMedicine = (props) => {
         setInputval([{name:'',price:'', quantity:'',expiry:'',desc:''}])
     
     }
+    
     const handelInputVal= (e,index) =>{
         
         const values = [...inputVal]
