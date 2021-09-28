@@ -25,8 +25,8 @@ const List = (props) => {
                         {
                             props.desc !== undefined ? <p>Desc:- {props.desc}</p> : null
                         } 
-                        <Button onClick={props.editBtn} outline color="primary" size="sm" style={{marginRight:'10px'}}>Edit {props.btnId}</Button>
-                        <Button onClick={props.deleteBtn} outline color="danger" size="sm">Delete {props.btnId}</Button>                                                                                   
+                        <Button onClick={() =>props.editBtn()} outline color="primary" size="sm" style={{marginRight:'10px'}}>Edit {props.btnId}</Button>
+                        <Button onClick={() =>props.deleteBtn()} outline color="danger" size="sm">Delete {props.btnId}</Button>                                                                                   
                     </CardBody>
                 </Card>
             </div>

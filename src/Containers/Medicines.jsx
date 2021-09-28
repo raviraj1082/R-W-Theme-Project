@@ -73,6 +73,7 @@ const Medicines = (props) => {
     const[addMedList,setAddMedList] = useState(false)
     const[,setUpdateData] = useState({})
     
+    const [editUpdate, setEditUpdate] = useState()
     const loadRefFun = () =>{
         setUpdateData({})
     }
@@ -97,9 +98,11 @@ const Medicines = (props) => {
     }    
     
     //EDIT-MED-DATA
-    const editFun = (id) =>{
-        let delData = localMData.filter((d) => d.id === id)        
-        console.log(delData)        
+    const editMed = (id) =>{
+        let editData = localMData.filter((d) => d.id === id)
+        setEditUpdate(editData[0]) 
+        alert(id)          
+          
     }
     
     //FILTER-ALL-DATA
@@ -118,7 +121,7 @@ const Medicines = (props) => {
                         </div>                      
                         <div className="row">
                             {
-                                addMedList !== false ? <Addmedicine loadRef={() => loadRefFun()} /> : null
+                                addMedList !== false ? <Addmedicine update={editUpdate} loadRef={() => loadRefFun()} /> : null
                             }                           
                             <div className="col-12 text-center">
                                 {
@@ -137,7 +140,7 @@ const Medicines = (props) => {
                         <div className="row">                            
                             {
                                 filterData.map((val,index) =>(
-                                    <List key={index}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc} editBtn={() => editFun(val.id)} deleteBtn={() => deleteMed(val.id)} btnId={val.id}/>                                   
+                                    <List key={index}  name={val.name} price={val.price} quantity={val.quantity} expiry={val.expiry} desc={val.desc} editBtn={() => editMed(val.id)} deleteBtn={() => deleteMed(val.id)} btnId={val.id}/>                                   
                                 ))
                             }                                                      
                         </div>

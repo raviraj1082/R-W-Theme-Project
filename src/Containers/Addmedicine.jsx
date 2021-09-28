@@ -1,11 +1,18 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Form,Input,Button} from 'reactstrap';
 
 const AddMedicine = (props) => {
     const[inputVal , setInputval] = useState([
         {name:'',price:'', quantity:'',expiry:'',desc:''}
     ])
-    const[updateData,setUpdateData] = useState({})
+    const  [updateData, setUpdateData] = useState({})
+
+    useEffect(
+        () => {
+            setUpdateData(props.update)
+        },
+    [updateData])
+
     const handleSubmit = (e) =>{
         e.preventDefault()
        
