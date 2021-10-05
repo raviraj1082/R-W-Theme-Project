@@ -70,9 +70,9 @@ const data =[
 
 const Medicines = (props) => {    
     const[search,setSearch] = useState('')
-    const[addMedList,setAddMedList] = useState(false)
+    const[addMedList,setAddMedList] = useState(true)
     const[,setUpdateData] = useState({})
-    
+    const[shortingData,setShortingData]=useState('')
     const [editUpdate, setEditUpdate] = useState()
     const loadRefFun = () =>{
         setUpdateData({})
@@ -101,16 +101,40 @@ const Medicines = (props) => {
     const editMed = (id) =>{
         let editData = localMData.filter((d) => d.id === id)
         setEditUpdate(editData[0]) 
-        alert(id)          
-          
+        alert(id)                    
     }
-    
-    //FILTER-ALL-DATA
-    let filterData = localMData.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) ||  (val.quantity.toString().includes(search)) || (val.expiry.toString().includes(search)) || val.desc.toLowerCase().includes(search.toLowerCase().substr())))    
-    if(search === ''){
-        filterData = localMData
-    }  
 
+    //FILTER-ALL-DATA
+    let filterData
+    // if(search === ''){
+    //     filterData = localMData
+    // } 
+    const shortingDataFun = (e) =>{
+        let newShortData
+        if(e.target.value === 'hl'){
+            newShortData = filterData.sort((a, b) => (a.price < b.price) ? 1 : -1)
+        }else if(e.target.value === 'lh'){
+            newShortData = filterData.sort((a, b) => (a.price > b.price) ? 1 : -1)
+        }else if(e.target.value === 'qty'){
+            newShortData = filterData.sort((a, b) => (a.quantity < b.quantity) ? 1 : -1)
+        }else if(e.target.value === 'exp'){
+            newShortData = filterData.sort((a, b) => (a.expiry > b.expiry) ? 1 : -1)
+        }else if(e.target.value === 'name'){
+            newShortData = filterData.sort((a, b) => a.name.localeCompare(b.name))
+        }
+        setShortingData(newShortData)
+        setUpdateData({})
+        //console.table(shortingData)
+    }
+    if(shortingData){
+        filterData = shortingData
+    }else if(search !== ''){
+        filterData = localMData.filter((val) => (val.name.toLowerCase().includes(search.toLowerCase().substr()) || (val.price.toString().includes(search)) ||  (val.quantity.toString().includes(search)) || (val.expiry.toString().includes(search)) || val.desc.toLowerCase().includes(search.toLowerCase().substr())))    
+    }else{
+        filterData = localMData
+    }
+        
+     
     return (
         <>  
             <main>
@@ -133,9 +157,26 @@ const Medicines = (props) => {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-6 mx-auto pt-3">                                
-                                <Input type="text" placeholder='Filter as your requirement...(name/price/quantity/expiry/desc)' onChange={(e) => setSearch(e.target.value)} />
+                            <div className="col-2"></div>
+                            <div className="col-4 mr-auto pt-3">                                
+                                <Input type="text" placeholder='Filter as your requirement...' onChange={(e) => setSearch(e.target.value)} />
                             </div>
+                            <div className="col-4 mr-auto pt-3">                                
+                                <Input 
+                                    type="select" 
+                                    name="select" 
+                                    style={{backgroundColor:'transparent'}}
+                                    onClick={(e) => shortingDataFun(e)}
+                                    > 
+                                    <option>---Select---</option>
+                                    <option value='hl'>High to low</option>
+                                    <option value='lh'>Low to high</option>
+                                    <option value='qty'>Quantity</option>
+                                    <option value='exp'>Expiry</option>
+                                    <option value='name'>Name</option>
+                                </Input>
+                            </div>
+                            <div className="col-2"></div>
                         </div>
                         <div className="row">                            
                             {
